@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs/internal/Subject';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 console.log('PRODUCT.SERVICE.TS>');
 
@@ -12,14 +14,14 @@ export class ProductService {
     private _http: HttpClient
   ) { }
 
+  cart = new BehaviorSubject([]);
+
 
   create(newProduct) {
-    console.log('> Product.service.ts > create(newProduct) > SERVER >');
     return this._http.post('/create', newProduct);
   }
 
   readAll() {
-    console.log('> product.service.ts > readAll() > SERVER >');
     return this._http.get('/readall');
   }
 

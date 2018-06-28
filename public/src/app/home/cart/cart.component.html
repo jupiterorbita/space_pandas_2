@@ -1,10 +1,26 @@
 <div class="wrapper">
   <h3>Shopping Cart</h3>
-  <ul>
-    <li>$12.99 Space Panda</li>
-    <li>$2.99 Space Panda Socks</li>
-    <li>$29.99 Plush Panda</li>
-  </ul>
+
+  <div class="product" *ngFor="let product of cart">
+
+    <!-- <div class="img_div">
+      <img src="{{ product.imgurl }}" alt="">
+    </div> -->
+
+    <div class='product_name_desc'>
+      <span class="product_title"> {{ product.name }}</span><br><hr>
+    </div>
+
+    <div class="price">
+      <span class='font_price'>{{ product.price }}</span><br>
+    </div>
+
+    <div class="price">
+      <span class='font_price'>{{ product.qty}}</span><br>
+    </div>
+
+
+  </div>
   <h5>Total: $299.99</h5>
   <button>Buy Now</button>
   <div class="helperPanda">
