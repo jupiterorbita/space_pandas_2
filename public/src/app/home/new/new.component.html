@@ -1,10 +1,15 @@
 <h2>add new product</h2>
 <hr>
+<span class="red" *ngIf="msg">{{ msg.message }}</span><br>
 
   <form (submit)="create(myform)" #myform="ngForm">
     Name: <br>
     <input type="text" ngModel name="name"> <br>
-    Qty<br>
+    IMG_url: <br>
+    <input type="text" ngModel name="imgurl"> <br>
+    Description: <br>
+    <textarea ngModel name="description"></textarea><br>
+    Qty:<br>
     <input type="number" ngModel name="qty"> <br>
     Price: <br>
     <input type="number" ngModel name="price"> <br><br>

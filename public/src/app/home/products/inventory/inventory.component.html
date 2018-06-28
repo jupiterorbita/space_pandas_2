@@ -4,35 +4,28 @@
     <div class="search_wrapper">
         <input type="text" placeholder="Search Component">
       </div>
-    
+
 
     <!-- products -->
-  <div class="product">
+  <div class="product" *ngFor="let product of products_arr">
 
     <div class="img_div">
-      <img src="https://cdn.drawception.com/images/panels/2017/7-11/LEepQkj4nP-10.png" alt="">
+      <img src="{{ product.imgurl }}" alt="">
     </div>
 
     <div class='product_name_desc'>
-      <span class="product_title">__PRODUCT__NAME__ PLACEHOLDER__!</span>
+      <span class="product_title"> {{ product.name }}</span><br><hr>
+      {{ product.description }}
     </div>
 
     <div class="price">
-      <span class='font_price'>__$_0000__</span><br>
+      <span class='font_price'>{{ product.price }}</span><br>
       <button class='add_to_cart_btn'>ADD TO CART</button>
     </div>
 
   </div>
 
 
-
-  <div class="product">
-    this is a product placeholder
-  </div>
-
-  <div class="product">
-    this is a product placeholder
-  </div>
 
 
 </div>

@@ -142,14 +142,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _home_cart_cart_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/cart/cart.component */ "./src/app/home/cart/cart.component.ts");
-/* harmony import */ var _home_products_promotion_promotion_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home/products/promotion/promotion.component */ "./src/app/home/products/promotion/promotion.component.ts");
-/* harmony import */ var _home_products_inventory_inventory_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/products/inventory/inventory.component */ "./src/app/home/products/inventory/inventory.component.ts");
-/* harmony import */ var _home_products_products_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/products/products.component */ "./src/app/home/products/products.component.ts");
-/* harmony import */ var _home_new_new_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/new/new.component */ "./src/app/home/new/new.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _home_cart_cart_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home/cart/cart.component */ "./src/app/home/cart/cart.component.ts");
+/* harmony import */ var _home_products_promotion_promotion_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/products/promotion/promotion.component */ "./src/app/home/products/promotion/promotion.component.ts");
+/* harmony import */ var _home_products_inventory_inventory_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/products/inventory/inventory.component */ "./src/app/home/products/inventory/inventory.component.ts");
+/* harmony import */ var _home_products_products_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/products/products.component */ "./src/app/home/products/products.component.ts");
+/* harmony import */ var _home_new_new_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/new/new.component */ "./src/app/home/new/new.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -168,27 +169,29 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
-                _home_cart_cart_component__WEBPACK_IMPORTED_MODULE_7__["CartComponent"],
-                _home_products_promotion_promotion_component__WEBPACK_IMPORTED_MODULE_8__["PromotionComponent"],
-                _home_products_inventory_inventory_component__WEBPACK_IMPORTED_MODULE_9__["InventoryComponent"],
-                _home_products_products_component__WEBPACK_IMPORTED_MODULE_10__["ProductsComponent"],
-                _home_new_new_component__WEBPACK_IMPORTED_MODULE_11__["NewComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
+                _home_cart_cart_component__WEBPACK_IMPORTED_MODULE_8__["CartComponent"],
+                _home_products_promotion_promotion_component__WEBPACK_IMPORTED_MODULE_9__["PromotionComponent"],
+                _home_products_inventory_inventory_component__WEBPACK_IMPORTED_MODULE_10__["InventoryComponent"],
+                _home_products_products_component__WEBPACK_IMPORTED_MODULE_11__["ProductsComponent"],
+                _home_new_new_component__WEBPACK_IMPORTED_MODULE_12__["NewComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"]
             ],
             providers: [_product_service__WEBPACK_IMPORTED_MODULE_0__["ProductService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -345,7 +348,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>add new product</h2>\n<hr>\n\n  <form (submit)=\"create(myform)\" #myform=\"ngForm\">\n    Name: <br>\n    <input type=\"text\" ngModel name=\"name\"> <br>\n    Qty<br>\n    <input type=\"number\" ngModel name=\"qty\"> <br>\n    Price: <br>\n    <input type=\"number\" ngModel name=\"price\"> <br><br>\n    <input type=\"submit\" value=\"CREATE\"> | <a [routerLink]=\"['/']\">cancel</a>\n  </form>\n  \n  "
+module.exports = "<h2>add new product</h2>\n<hr>\n<span class=\"red\" *ngIf=\"msg\">{{ msg.message }}</span><br>\n\n  <form (submit)=\"create(myform)\" #myform=\"ngForm\">\n    Name: <br>\n    <input type=\"text\" ngModel name=\"name\"> <br>\n    IMG_url: <br>\n    <input type=\"text\" ngModel name=\"imgurl\"> <br>\n    Description: <br>\n    <textarea ngModel name=\"description\"></textarea><br>\n    Qty:<br>\n    <input type=\"number\" ngModel name=\"qty\"> <br>\n    Price: <br>\n    <input type=\"number\" ngModel name=\"price\"> <br><br>\n    <input type=\"submit\" value=\"CREATE\"> | <a [routerLink]=\"['/']\">cancel</a>\n  </form>\n  \n  "
 
 /***/ }),
 
@@ -359,7 +362,9 @@ module.exports = "<h2>add new product</h2>\n<hr>\n\n  <form (submit)=\"create(my
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewComponent", function() { return NewComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _product_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../product.service */ "./src/app/product.service.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -370,18 +375,47 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+console.log('NEW.COMPONENT.TS>');
 var NewComponent = /** @class */ (function () {
-    function NewComponent() {
+    function NewComponent(_productService, _router) {
+        this._productService = _productService;
+        this._router = _router;
     }
     NewComponent.prototype.ngOnInit = function () {
+        this.newProduct = null;
+        this.msg = '';
+    };
+    NewComponent.prototype.goHome = function () {
+        console.log('> new.component.ts > goHome() ');
+        this._router.navigate(['/']);
+    };
+    NewComponent.prototype.create = function (myform) {
+        var _this = this;
+        console.log('> new.component.ts > create()');
+        this.newProduct = myform.value;
+        this._productService.create(this.newProduct)
+            .subscribe(function (response) {
+            console.log('> new.component.ts > create() > response =>', response);
+            if (response['error']) {
+                console.log('response.error =>', response['error']);
+                _this.msg = response['error'];
+            }
+            else {
+                _this.msg = '';
+                _this.goHome();
+            }
+        });
     };
     NewComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-new',
             template: __webpack_require__(/*! ./new.component.html */ "./src/app/home/new/new.component.html"),
             styles: [__webpack_require__(/*! ./new.component.css */ "./src/app/home/new/new.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_product_service__WEBPACK_IMPORTED_MODULE_0__["ProductService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], NewComponent);
     return NewComponent;
 }());
@@ -408,7 +442,7 @@ module.exports = "*{\n  outline: 2px dotted red;\n}\n.wrapper{\n  width: 99%;\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n    <h3>Inventory Component</h3>\n\n    <div class=\"search_wrapper\">\n        <input type=\"text\" placeholder=\"Search Component\">\n      </div>\n    \n\n    <!-- products -->\n  <div class=\"product\">\n\n    <div class=\"img_div\">\n      <img src=\"https://cdn.drawception.com/images/panels/2017/7-11/LEepQkj4nP-10.png\" alt=\"\">\n    </div>\n\n    <div class='product_name_desc'>\n      <span class=\"product_title\">__PRODUCT__NAME__ PLACEHOLDER__!</span>\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>__$_0000__</span><br>\n      <button class='add_to_cart_btn'>ADD TO CART</button>\n    </div>\n\n  </div>\n\n\n\n  <div class=\"product\">\n    this is a product placeholder\n  </div>\n\n  <div class=\"product\">\n    this is a product placeholder\n  </div>\n\n\n</div>\n"
+module.exports = "<div class=\"wrapper\">\n    <h3>Inventory Component</h3>\n\n    <div class=\"search_wrapper\">\n        <input type=\"text\" placeholder=\"Search Component\">\n      </div>\n    \n\n    <!-- products -->\n  <div class=\"product\" *ngFor=\"let product of products_arr\">\n\n    <div class=\"img_div\">\n      <img src=\"{{ product.imgurl }}\" alt=\"\">\n    </div>\n\n    <div class='product_name_desc'>\n      <span class=\"product_title\"> {{ product.name }}</span><br><hr>\n      {{ product.description }}\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.price }}</span><br>\n      <button class='add_to_cart_btn'>ADD TO CART</button>\n    </div>\n\n  </div>\n\n\n\n\n</div>\n"
 
 /***/ }),
 
@@ -440,6 +474,16 @@ var InventoryComponent = /** @class */ (function () {
         this._productService = _productService;
     }
     InventoryComponent.prototype.ngOnInit = function () {
+        console.log('>products.component.ts > ngOnInit >');
+        this.getAll();
+    };
+    InventoryComponent.prototype.getAll = function () {
+        var _this = this;
+        console.log('>pets.component.ts > getAll() >');
+        this._productService.readAll().subscribe(function (server_response) {
+            console.log('pets.component.ts > getAll() > server_response =>', server_response);
+            _this.products_arr = server_response['data'];
+        });
     };
     InventoryComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -593,6 +637,7 @@ var PromotionComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductService", function() { return ProductService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -603,14 +648,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+console.log('PRODUCT.SERVICE.TS>');
 var ProductService = /** @class */ (function () {
-    function ProductService() {
+    function ProductService(_http) {
+        this._http = _http;
     }
+    ProductService.prototype.create = function (newProduct) {
+        console.log('> Product.service.ts > create(newProduct) > SERVER >');
+        return this._http.post('/create', newProduct);
+    };
+    ProductService.prototype.readAll = function () {
+        console.log('> product.service.ts > readAll() > SERVER >');
+        return this._http.get('/readall');
+    };
     ProductService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], ProductService);
     return ProductService;
 }());
@@ -679,7 +735,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jman/Desktop/space_pandas_commerce/public/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/jman/Desktop/space_pandas_2/public/src/main.ts */"./src/main.ts");
 
 
 /***/ })
