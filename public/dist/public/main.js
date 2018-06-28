@@ -219,7 +219,7 @@ module.exports = ".wrapper {\n  width: 99%;\n  height: 100%;\n  background-color
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <h3>Shopping Cart</h3>\n  <ul>\n    <li>$12.99 Space Panda</li>\n    <li>$2.99 Space Panda Socks</li>\n    <li>$29.99 Plush Panda</li>\n  </ul>\n  <h5>Total: $299.99</h5>\n  <button>Buy Now</button>\n  <div class=\"helperPanda\">\n    <h4>Need Help?</h4>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"wrapper\">\n  <h3>Shopping Cart</h3>\n\n  <div class=\"product\" *ngFor=\"let product of cart\">\n\n    <!-- <div class=\"img_div\">\n      <img src=\"{{ product.imgurl }}\" alt=\"\">\n    </div> -->\n\n    <div class='product_name_desc'>\n      <span class=\"product_title\"> {{ product.name }}</span><br><hr>\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.price }}</span><br>\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.qty}}</span><br>\n    </div>\n\n\n  </div>\n  <h5>Total: $299.99</h5>\n  <button>Buy Now</button>\n  <div class=\"helperPanda\">\n    <h4>Need Help?</h4>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -248,7 +248,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var CartComponent = /** @class */ (function () {
     function CartComponent(_productService) {
+        var _this = this;
         this._productService = _productService;
+        this._productService.cart.subscribe(function (cart) {
+            _this.cart = cart;
+        }, function (err) { }, function () { });
     }
     CartComponent.prototype.ngOnInit = function () {
     };
@@ -442,7 +446,7 @@ module.exports = "*{\n  outline: 2px dotted red;\n}\n.wrapper{\n  width: 99%;\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n    <h3>Inventory Component</h3>\n\n    <div class=\"search_wrapper\">\n        <input type=\"text\" placeholder=\"Search Component\">\n      </div>\n    \n\n    <!-- products -->\n  <div class=\"product\" *ngFor=\"let product of products_arr\">\n\n    <div class=\"img_div\">\n      <img src=\"{{ product.imgurl }}\" alt=\"\">\n    </div>\n\n    <div class='product_name_desc'>\n      <span class=\"product_title\"> {{ product.name }}</span><br><hr>\n      {{ product.description }}\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.price }}</span><br>\n      <button class='add_to_cart_btn'>ADD TO CART</button>\n    </div>\n\n  </div>\n\n\n\n\n</div>\n"
+module.exports = "<div class=\"wrapper\">\n    <h3>Inventory Component</h3>\n\n    <div class=\"search_wrapper\">\n        <input type=\"text\" placeholder=\"Search Component\">\n      </div>\n\n\n    <!-- products -->\n  <div class=\"product\" *ngFor=\"let product of products_arr\">\n\n    <div class=\"img_div\">\n      <img src=\"{{ product.imgurl }}\" alt=\"\">\n    </div>\n\n    <div class='product_name_desc'>\n      <span class=\"product_title\"> {{ product.name }}</span><br><hr>\n      {{ product.description }}\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.price }}</span><br>\n      <button class='add_to_cart_btn' (click)=\"addToCart(product)\">ADD TO CART</button>\n    </div>\n\n  </div>\n\n\n\n\n</div>\n"
 
 /***/ }),
 
@@ -471,7 +475,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var InventoryComponent = /** @class */ (function () {
     function InventoryComponent(_productService) {
+        var _this = this;
         this._productService = _productService;
+        this.productToAdd = { "product_id": 0, "qty": 0 };
+        this.products_arr = [];
+        this._productService.cart.subscribe(function (cart) {
+            _this.cart = cart;
+        });
     }
     InventoryComponent.prototype.ngOnInit = function () {
         console.log('>products.component.ts > ngOnInit >');
@@ -481,9 +491,24 @@ var InventoryComponent = /** @class */ (function () {
         var _this = this;
         console.log('>pets.component.ts > getAll() >');
         this._productService.readAll().subscribe(function (server_response) {
-            console.log('pets.component.ts > getAll() > server_response =>', server_response);
             _this.products_arr = server_response['data'];
         });
+    };
+    InventoryComponent.prototype.addToCart = function (product) {
+        console.log("in add to cart");
+        for (var idx = 0; idx < this.cart.length; idx++) {
+            if (this.cart[idx]._id === product._id) {
+                this.cart[idx].qty++;
+                this.cart[idx].price += product.price;
+                return;
+            }
+        }
+        // this.productToAdd["product_id"] = product_id;
+        // this.productToAdd["qty"] = 1;
+        // this.productToAdd["name"] = product.name
+        console.log("product in add", this.productToAdd);
+        this.cart.push(product);
+        this._productService.cart.next(this.cart);
     };
     InventoryComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -638,6 +663,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductService", function() { return ProductService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/internal/BehaviorSubject */ "./node_modules/rxjs/internal/BehaviorSubject.js");
+/* harmony import */ var rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_2__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -649,17 +676,17 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 console.log('PRODUCT.SERVICE.TS>');
 var ProductService = /** @class */ (function () {
     function ProductService(_http) {
         this._http = _http;
+        this.cart = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
     }
     ProductService.prototype.create = function (newProduct) {
-        console.log('> Product.service.ts > create(newProduct) > SERVER >');
         return this._http.post('/create', newProduct);
     };
     ProductService.prototype.readAll = function () {
-        console.log('> product.service.ts > readAll() > SERVER >');
         return this._http.get('/readall');
     };
     ProductService = __decorate([
@@ -735,7 +762,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jman/Desktop/space_pandas_2/public/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/sadieflick/Desktop/DojoAssignments/MEAN/angular/space_pandas_2/public/src/main.ts */"./src/main.ts");
 
 
 /***/ })
