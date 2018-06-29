@@ -40,4 +40,25 @@ module.exports = {
             }
         })
     },
+
+    readSome: function(req, res) {
+        console.log('>\nproductController > readSome >');
+        console.log('\n\n (req.body)====>', req.body)
+        console.log('\n req.body.product_name =>', req.body.product_name);
+        Product.find({name: new RegExp('^'+req.body.product_name, "i")}, function(err, return_obj){
+            if (err){
+                console.log('=========> ERROR <============');
+                console.log('>\n\nproductController > readSome > Product.find({}) > ERR =>', err);
+                res.json({messsage: '>>productController > readall > Product.find({}) > ERR', error: err});
+            }
+            else {
+                console.log('>productController > readall > Product.find({}) > OK');
+                console.log('\nSERVER >> SUCCESS << \n');
+                console.log('return_obj =>', return_obj);
+                res.json({messsage: '>>productController > readall > Product.find({}) > ok > data', data: return_obj})
+            }
+        })
+    }
 }
+
+// Product.find({name: new RegExp('^'+req.body.product_name+'$', "i")}, function(err, return_obj){

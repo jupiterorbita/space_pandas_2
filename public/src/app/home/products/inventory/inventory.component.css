@@ -38,6 +38,7 @@ div.product{
   background-color: lightcyan;
   margin: 20px auto;
   padding: 10px;
+  display: inline-block;
 }
 /* ===== product img div ====== */
   div.img_div{

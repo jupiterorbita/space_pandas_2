@@ -5,13 +5,13 @@ const mongoose = require("mongoose");
 var ProductSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: [true, 'please enter a name'],
     minlength: [3, 'name must be at least 3 characters'],
   },
   imgurl: {
     type: String,
-    required: true,
-    minlength: [3, 'name must be at least 3 characters'],
+    required: [true, 'enter imgUrl'],
+    minlength: [1, 'name must be at least 1 character'],
   },
   price: {
     type: Number,
@@ -25,6 +25,7 @@ var ProductSchema = new mongoose.Schema({
     },
   qty: {
     type: Number,
+    default: 1
   },
   likes: {
     type: Number,

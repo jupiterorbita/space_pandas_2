@@ -435,7 +435,7 @@ var NewComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "*{\n  outline: 2px dotted red;\n}\n.wrapper{\n  width: 99%;\n  height: 90%;\n  background-color: olivedrab;\n  border: 4px dotted rgb(199, 119, 14);\n}\n.search_wrapper{\n  width: 99%;\n  height: 10%;\n  background-color: rgb(32, 63, 63);\n  border: 1px dotted purple;\n}\n.wrapper input[type=text] {\n  float: left;\n  padding: 6px;\n  width: 80%;\n  height: 15%;\n  border: 1px solid black;\n  border-radius: 5px;\n  margin-top: 15px;\n  margin-right: 16px;\n  margin-left: 10px;\n  font-size: 17px;\n}\n/* ==== products div ====== */\ndiv.product{\n  outline: 2px dotted rebeccapurple;\n  width: 96%;\n  height: 150px;\n  background-color: lightcyan;\n  margin: 20px auto;\n  padding: 10px;\n}\n/* ===== product img div ====== */\ndiv.img_div{\n    display: inline-block;\n    vertical-align: top;\n    background-color: blueviolet;\n    margin-right: 20px;\n  }\nimg {\n      -o-object-fit: cover;\n         object-fit: cover;\n      width: 150px;\n      height: 150px;\n    }\n/* ===== product name descr div ====== */\ndiv.product_name_desc{\n    display: inline-block;\n    vertical-align: top;\n    height: 99%;\n    width: 60%;\n    background-color: darkseagreen;\n  }\n/* ====== product price div ===== */\ndiv.price{\n    display: inline-block;\n    vertical-align: top;\n    margin-left: 20px;\n    width: 20%;\n    background-color: aquamarine;\n  }\nspan.font_price{\n      font-size: 14pt;\n      font-weight: 800;\n      text-align: center;\n    }\n/* img {    \n  min-width: 100%;\n  min-height: 100%;\n  width: auto;\n  height: auto;\n  } */"
+module.exports = "*{\n  outline: 2px dotted red;\n}\n.wrapper{\n  width: 99%;\n  height: 90%;\n  background-color: olivedrab;\n  border: 4px dotted rgb(199, 119, 14);\n}\n.search_wrapper{\n  width: 99%;\n  height: 10%;\n  background-color: rgb(32, 63, 63);\n  border: 1px dotted purple;\n}\n.wrapper input[type=text] {\n  float: left;\n  padding: 6px;\n  width: 80%;\n  height: 15%;\n  border: 1px solid black;\n  border-radius: 5px;\n  margin-top: 15px;\n  margin-right: 16px;\n  margin-left: 10px;\n  font-size: 17px;\n}\n/* ==== products div ====== */\ndiv.product{\n  outline: 2px dotted rebeccapurple;\n  width: 96%;\n  height: 150px;\n  background-color: lightcyan;\n  margin: 20px auto;\n  padding: 10px;\n  display: inline-block;\n}\n/* ===== product img div ====== */\ndiv.img_div{\n    display: inline-block;\n    vertical-align: top;\n    background-color: blueviolet;\n    margin-right: 20px;\n  }\nimg {\n      -o-object-fit: cover;\n         object-fit: cover;\n      width: 150px;\n      height: 150px;\n    }\n/* ===== product name descr div ====== */\ndiv.product_name_desc{\n    display: inline-block;\n    vertical-align: top;\n    height: 99%;\n    width: 60%;\n    background-color: darkseagreen;\n  }\n/* ====== product price div ===== */\ndiv.price{\n    display: inline-block;\n    vertical-align: top;\n    margin-left: 20px;\n    width: 20%;\n    background-color: aquamarine;\n  }\nspan.font_price{\n      font-size: 14pt;\n      font-weight: 800;\n      text-align: center;\n    }\n/* img {    \n  min-width: 100%;\n  min-height: 100%;\n  width: auto;\n  height: auto;\n  } */"
 
 /***/ }),
 
@@ -446,7 +446,7 @@ module.exports = "*{\n  outline: 2px dotted red;\n}\n.wrapper{\n  width: 99%;\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n    <h3>Inventory Component</h3>\n\n    <div class=\"search_wrapper\">\n        <input type=\"text\" placeholder=\"Search Component\">\n      </div>\n\n\n    <!-- products -->\n  <div class=\"product\" *ngFor=\"let product of products_arr\">\n\n    <div class=\"img_div\">\n      <img src=\"{{ product.imgurl }}\" alt=\"\">\n    </div>\n\n    <div class='product_name_desc'>\n      <span class=\"product_title\"> {{ product.name }}</span><br><hr>\n      {{ product.description }}\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.price }}</span><br>\n      <button class='add_to_cart_btn' (click)=\"addToCart(product)\">ADD TO CART</button>\n    </div>\n\n  </div>\n\n\n\n\n</div>\n"
+module.exports = "<div class=\"wrapper\">\n    <h3>Inventory Component</h3>\n\n    <div class=\"search_wrapper\">\n        <input (keyup)=\"onKey($event)\" type=\"text\" placeholder=\"Search Component\">\n      </div>\n\n\n    <!-- products -->\n    <!-- <hr>\n    on key $event: <br>\n    <p>{{ values | json}}</p> -->\n    <!-- <p style=\"color:white;\">{{ found | json}}</p> -->\n    <br>\n    <div class=\"found product\" *ngIf=\"found.length>1\" >\n      <div class=\"found_list\" *ngFor=\"let prod of found\">\n\n\n        <div class=\"img_div\">\n          <img src=\"{{ prod.imgurl }}\" alt=\"\">\n        </div>\n\n        <div class='product_name_desc'>\n          <span class=\"product_title\"> {{ prod.name }}</span><br><hr>\n          {{ prod.description }}\n        </div>\n\n        <div class=\"price\">\n          <span class='font_price'>{{ prod.price }}</span><br>\n          <button class='add_to_cart_btn' (click)=\"addToCart(product)\">ADD TO CART</button>\n        </div>\n\n      </div>\n    </div>\n\n<hr>\n\n\n\n\n  <div class=\"product\" *ngFor=\"let product of products_arr\">\n\n    <div class=\"img_div\">\n      <img src=\"{{ product.imgurl }}\" alt=\"\">\n    </div>\n\n    <div class='product_name_desc'>\n      <span class=\"product_title\"> {{ product.name }}</span><br><hr>\n      {{ product.description }}\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.price }}</span><br>\n      <button class='add_to_cart_btn' (click)=\"addToCart(product)\">ADD TO CART</button>\n    </div>\n\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -477,7 +477,7 @@ var InventoryComponent = /** @class */ (function () {
     function InventoryComponent(_productService) {
         var _this = this;
         this._productService = _productService;
-        this.productToAdd = { "product_id": 0, "qty": 0 };
+        this.productToAdd = { 'product_id': 0, 'qty': 0 };
         this.products_arr = [];
         this._productService.cart.subscribe(function (cart) {
             _this.cart = cart;
@@ -485,7 +485,22 @@ var InventoryComponent = /** @class */ (function () {
     }
     InventoryComponent.prototype.ngOnInit = function () {
         console.log('>products.component.ts > ngOnInit >');
+        this.values = '';
         this.getAll();
+    };
+    // ======== onKey event =============
+    InventoryComponent.prototype.onKey = function (event) {
+        var _this = this;
+        console.log('====== event =>', event);
+        console.log('====== event.target =>', event.target);
+        console.log('====== event.target.value =>', event.target.value);
+        this.values += event.target.value;
+        this._productService.readSome(this.values).subscribe(function (server_response_arr) {
+            console.log('server_response =>', server_response_arr);
+            _this.found = server_response_arr['data'];
+            console.log('=-=-=-=-=-==--=-= this.found.name =>', _this.found[0].name);
+        });
+        this.values = '';
     };
     InventoryComponent.prototype.getAll = function () {
         var _this = this;
@@ -495,7 +510,7 @@ var InventoryComponent = /** @class */ (function () {
         });
     };
     InventoryComponent.prototype.addToCart = function (product) {
-        console.log("in add to cart");
+        console.log('in add to cart');
         for (var idx = 0; idx < this.cart.length; idx++) {
             if (this.cart[idx]._id === product._id) {
                 this.cart[idx].qty++;
@@ -506,7 +521,7 @@ var InventoryComponent = /** @class */ (function () {
         // this.productToAdd["product_id"] = product_id;
         // this.productToAdd["qty"] = 1;
         // this.productToAdd["name"] = product.name
-        console.log("product in add", this.productToAdd);
+        console.log('product in add', this.productToAdd);
         this.cart.push(product);
         this._productService.cart.next(this.cart);
     };
@@ -689,6 +704,10 @@ var ProductService = /** @class */ (function () {
     ProductService.prototype.readAll = function () {
         return this._http.get('/readall');
     };
+    ProductService.prototype.readSome = function (product_name) {
+        console.log('>>>>>>>>>>>', product_name);
+        return this._http.post('/readSome/', { product_name: product_name });
+    };
     ProductService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -762,7 +781,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/sadieflick/Desktop/DojoAssignments/MEAN/angular/space_pandas_2/public/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/jman/Desktop/space_pandas_2/public/src/main.ts */"./src/main.ts");
 
 
 /***/ })

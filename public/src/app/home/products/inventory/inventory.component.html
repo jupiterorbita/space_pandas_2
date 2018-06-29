@@ -2,11 +2,42 @@
     <h3>Inventory Component</h3>
 
     <div class="search_wrapper">
-        <input type="text" placeholder="Search Component">
+        <input (keyup)="onKey($event)" type="text" placeholder="Search Component">
       </div>
 
 
     <!-- products -->
+    <!-- <hr>
+    on key $event: <br>
+    <p>{{ values | json}}</p> -->
+    <!-- <p style="color:white;">{{ found | json}}</p> -->
+    <br>
+    <div class="found product" *ngIf="found.length>1" >
+      <div class="found_list" *ngFor="let prod of found">
+
+
+        <div class="img_div">
+          <img src="{{ prod.imgurl }}" alt="">
+        </div>
+
+        <div class='product_name_desc'>
+          <span class="product_title"> {{ prod.name }}</span><br><hr>
+          {{ prod.description }}
+        </div>
+
+        <div class="price">
+          <span class='font_price'>{{ prod.price }}</span><br>
+          <button class='add_to_cart_btn' (click)="addToCart(product)">ADD TO CART</button>
+        </div>
+
+      </div>
+    </div>
+
+<hr>
+
+
+
+
   <div class="product" *ngFor="let product of products_arr">
 
     <div class="img_div">
@@ -24,8 +55,5 @@
     </div>
 
   </div>
-
-
-
 
 </div>

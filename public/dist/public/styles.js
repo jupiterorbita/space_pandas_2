@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/sadieflick/Desktop/DojoAssignments/MEAN/angular/space_pandas_2/public/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/jman/Desktop/space_pandas_2/public/src/styles.css */"./src/styles.css");
 
 
 /***/ })
