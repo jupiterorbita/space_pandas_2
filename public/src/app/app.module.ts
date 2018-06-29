@@ -13,6 +13,7 @@ import { PromotionComponent } from './home/products/promotion/promotion.componen
 import { InventoryComponent } from './home/products/inventory/inventory.component';
 import { ProductsComponent } from './home/products/products.component';
 import { NewComponent } from './home/new/new.component';
+// import { StorageServiceModule } from 'angular-webstorage-service';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { NewComponent } from './home/new/new.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule
+    // StorageServiceModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

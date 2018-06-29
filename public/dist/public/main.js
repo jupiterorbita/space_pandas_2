@@ -110,6 +110,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
+// import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = 'app';
@@ -170,6 +171,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+// import { StorageServiceModule } from 'angular-webstorage-service';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -189,6 +191,7 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"]
+                // StorageServiceModule
             ],
             providers: [_product_service__WEBPACK_IMPORTED_MODULE_0__["ProductService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
@@ -219,7 +222,7 @@ module.exports = ".wrapper {\n  width: 99%;\n  height: 100%;\n  background-color
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <h3>Shopping Cart</h3>\n\n  <div class=\"product\" *ngFor=\"let product of cart\">\n\n    <!-- <div class=\"img_div\">\n      <img src=\"{{ product.imgurl }}\" alt=\"\">\n    </div> -->\n\n    <div class='product_name_desc'>\n      <span class=\"product_title\"> {{ product.name }}</span><br><hr>\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.price }}</span><br>\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.qty}}</span><br>\n    </div>\n\n\n  </div>\n  <h5>Total: $299.99</h5>\n  <button>Buy Now</button>\n  <div class=\"helperPanda\">\n    <h4>Need Help?</h4>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"wrapper\">\n  <h3>Shopping Cart</h3>\n\n  <div class=\"product\" *ngFor=\"let product of cart\">\n\n    <!-- <div class=\"img_div\">\n      <img src=\"{{ product.imgurl }}\" alt=\"\">\n    </div> -->\n\n    <div class='product_name_desc'>\n      <span class=\"product_title\"> {{ product.name }}</span><br><hr>\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.price }}</span><br>\n    </div>\n\n    <div class=\"price\">\n      <span class='font_price'>{{ product.qty}}</span><br>\n    </div>\n\n\n  </div>\n  <h5>Total: ${{total}}</h5>\n  <hr>\n  <!-- <h5>TOTAL_SHOW: {{show_total}}</h5> -->\n  <button>Buy Now</button>\n  <div class=\"helperPanda\">\n    <h4>Need Help?</h4>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -246,15 +249,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+// import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 var CartComponent = /** @class */ (function () {
     function CartComponent(_productService) {
         var _this = this;
         this._productService = _productService;
+        this.total = 0;
         this._productService.cart.subscribe(function (cart) {
             _this.cart = cart;
+            _this.total = _productService.total;
         }, function (err) { }, function () { });
     }
     CartComponent.prototype.ngOnInit = function () {
+        this.show_total = this._productService.total;
     };
     CartComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -314,6 +321,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+// import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
     }
@@ -381,6 +389,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+// import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 console.log('NEW.COMPONENT.TS>');
 var NewComponent = /** @class */ (function () {
     function NewComponent(_productService, _router) {
@@ -473,11 +482,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+// import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 var InventoryComponent = /** @class */ (function () {
     function InventoryComponent(_productService) {
         var _this = this;
         this._productService = _productService;
-        this.productToAdd = { "product_id": 0, "qty": 0 };
         this.products_arr = [];
         this._productService.cart.subscribe(function (cart) {
             _this.cart = cart;
@@ -499,15 +508,23 @@ var InventoryComponent = /** @class */ (function () {
         for (var idx = 0; idx < this.cart.length; idx++) {
             if (this.cart[idx]._id === product._id) {
                 this.cart[idx].qty++;
+                console.log("in for loop before: ", this._productService.total);
+                this._productService.total += product.price;
+                console.log("in for loop after: ", this._productService.total);
                 this.cart[idx].price += product.price;
+                this._productService.cart.next(this.cart);
                 return;
             }
         }
-        // this.productToAdd["product_id"] = product_id;
-        // this.productToAdd["qty"] = 1;
-        // this.productToAdd["name"] = product.name
-        console.log("product in add", this.productToAdd);
-        this.cart.push(product);
+        var productToAdd = {};
+        productToAdd["_id"] = product._id;
+        productToAdd["qty"] = 1;
+        productToAdd["name"] = product.name;
+        productToAdd["price"] = product.price;
+        console.log("total before add: ", this._productService.total);
+        this._productService.total += product.price;
+        console.log("total after add: ", this._productService.total);
+        this.cart.push(productToAdd);
         this._productService.cart.next(this.cart);
     };
     InventoryComponent = __decorate([
@@ -568,6 +585,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+// import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 var ProductsComponent = /** @class */ (function () {
     function ProductsComponent() {
     }
@@ -681,6 +699,7 @@ console.log('PRODUCT.SERVICE.TS>');
 var ProductService = /** @class */ (function () {
     function ProductService(_http) {
         this._http = _http;
+        this.total = 0;
         this.cart = new rxjs_internal_BehaviorSubject__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]([]);
     }
     ProductService.prototype.create = function (newProduct) {

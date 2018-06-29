@@ -14,6 +14,7 @@ export class ProductService {
     private _http: HttpClient
   ) { }
 
+  total = 0;
   cart = new BehaviorSubject([]);
 
 
