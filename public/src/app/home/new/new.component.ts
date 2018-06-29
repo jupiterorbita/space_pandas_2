@@ -2,6 +2,7 @@ import { ProductService } from './../../product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+// import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 console.log('NEW.COMPONENT.TS>');
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../product.service';
+// import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-inventory',
@@ -58,16 +59,30 @@ export class InventoryComponent implements OnInit {
     for (let idx = 0; idx < this.cart.length; idx++) {
       if (this.cart[idx]._id === product._id) {
         this.cart[idx].qty++;
+        console.log('in for loop before: ', this._productService.total);
+        this._productService.total += product.price;
+        console.log('in for loop after: ', this._productService.total);
         this.cart[idx].price += product.price;
+        this._productService.cart.next(this.cart);
+
         return;
       }
     }
-    // this.productToAdd["product_id"] = product_id;
-    // this.productToAdd["qty"] = 1;
-    // this.productToAdd["name"] = product.name
+    const productToAdd = {};
+    productToAdd['_id'] = product._id;
+    productToAdd['qty'] = 1;
+    productToAdd['name'] = product.name;
+    productToAdd['price'] = product.price;
 
     console.log('product in add', this.productToAdd);
     this.cart.push(product);
+    console.log('total before add: ', this._productService.total);
+
+    this._productService.total += product.price;
+
+    console.log('total after add: ', this._productService.total);
+
+    this.cart.push(productToAdd);
     this._productService.cart.next(this.cart);
   }
 
